@@ -12,7 +12,7 @@ export default function Home() {
     console.log('urlll:', url);
     axios
       .post(
-        'http://localhost:5000/shorten',
+        'https://url-shortener-backend-9kai.onrender.com/shorten',
         {
           url: url,
         },
