@@ -18,7 +18,7 @@ export default function Home() {
         },
         {
           headers: {
-            'content-type': 'application/json',
+            'content-type': 'application/x-www-form-urlencoded',
           },
         }
       )
