@@ -12,7 +12,7 @@ export default function Home() {
     console.log('urlll:', url);
     await axios
       .post(
-        'http://localhost:5000/shorten',
+        'https://url-shortener-backend-9kai.onrender.com/shorten',
         {
           url: url,
         },
@@ -23,7 +23,9 @@ export default function Home() {
         }
       )
       .then((res) => {
-        setShortUrl(`http://localhost:5000/${res.data.shortCode}`);
+        setShortUrl(
+          `https://url-shortener-backend-9kai.onrender.com/${res.data.shortCode}`
+        );
         console.log('frontend axios call', res.data.shortCode);
       })
       .catch((err) => console.error('error', err));
