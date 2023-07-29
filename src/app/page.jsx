@@ -8,24 +8,22 @@ export default function Home() {
   const [url, setUrl] = useState();
   const [shortUrl, setShortUrl] = useState('');
 
-  const onSubmit = () => {
+  const onSubmit = async () => {
     console.log('urlll:', url);
-    axios
+    await axios
       .post(
-        'https://url-shortener-backend-9kai.onrender.com/shorten',
+        'http://localhost:5000/shorten',
         {
           url: url,
         },
         {
           headers: {
-            'content-type': 'application/x-www-form-urlencoded',
+            'Content-type': 'application/x-www-form-urlencoded',
           },
         }
       )
       .then((res) => {
-        setShortUrl(
-          `https://url-shortener-backend-9kai.onrender.com/${res.data.shortCode}`
-        );
+        setShortUrl(`http://localhost:5000/${res.data.shortCode}`);
         console.log('frontend axios call', res.data.shortCode);
       })
       .catch((err) => console.error('error', err));
@@ -49,7 +47,10 @@ export default function Home() {
           Shorten
         </button>
         <br />
-        <a>{shortUrl}</a>
+        <a href={shortUrl} target='_blank'>
+          {shortUrl}
+        </a>
+        <p>Click again to get the shortened link.</p>
       </div>
     </div>
   );
